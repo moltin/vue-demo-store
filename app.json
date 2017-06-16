@@ -1,0 +1,13 @@
+{
+  "name": "Moltin Vue Demo Store",
+  "description": "A moltin demo store built with Vue.js",
+  "repository": "https://github.com/moltin/vue-demo-store",
+  "logo": "https://docs.moltin.com/assets/img/logo.svg",
+  "keywords": ["moltin", "vue"],
+  "env": {
+    "CLIENT_ID": {
+      "description": "The client_id for your moltin store",
+      "default": "pTlK7P9BYEu7HTjNlh9Zyp75qGkxxeGiPmqq8CEFEq"
+    }
+  }
+}
