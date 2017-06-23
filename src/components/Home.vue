@@ -1,35 +1,38 @@
 <template>
-
-  <div>
-    <div id="slider"></div>
-
-    <div class="row">
-      <div class="col-md-8 offset-md-2 text-center">
-
-        <div class="row">
-
-          <div class="col-md-3 product" v-for="(product, key) in products.data">
-            <div class="product-image">
-              <router-link :to="'/products/' + product.slug">
-                <img :src="getProductThumb(product)" alt="">
-              </router-link>
-            </div>
-            <div class="product-info">
-              <h2>
-                <router-link :to="'/products/' + product.slug">
-                  {{ product.name }}
-                </router-link>
-              </h2>
-              <p>{{ product.meta.display_price.with_tax.formatted }}</p>
-            </div>
+<div>
+  <div class="collection">
+      <div class="content">
+          <h2 class="hide-content">Our collections</h2>
+          <div class="collection-list">
+              <a class="collection-item" href="collection.html" style="background: #d9d9d9;" v-for="(category, val) in categories.data">
+                  <h3>{{ category.name }}<span class="hide-content"> lamps</span></h3>
+                  <img src="static/img/products/lamp7-trans.png" alt="Crown - A unique black lamp with six metal legs forming a nest at the top, creating a crown of six lights." aria-hidden="true"/>
+                  <div class="overlay fake-btn hidden" aria-hidden="true" style="background: #4d4d4d">Shop <span class="hide-content">our unique collection </span>now</div>
+              </a>
           </div>
-
-        </div>
-
       </div>
-    </div>
   </div>
-
+  <section class="top-picks">
+      <div class="content">
+          <h2>Top Picks</h2>
+          <div class="product-list" v-if="collection.included.products">
+              <a class="product-item new" v-for="(product, val) in collection.included.products">
+                  <div class="product-image" style="background: #e2d1bf;">
+                    {{ getProductImage(product) }}
+                      <img src="" alt="Black mod - A black tripod floor lamp with a modern flair."/>
+                  </div>
+                  <div class="overlay hidden" aria-hidden="true">
+                      <div class="overlay-background" style="background: #ad9d8b;"></div>
+                      <div class="overlay-content">
+                          <div class="title">{{ product.name }}</div>
+                          <div class="price">{{ product.price }}</div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+      </div>
+  </section>
+</div>
 </template>
 
 <script>
@@ -39,67 +42,33 @@ export default {
   name: 'home',
   data () {
     return {
-      products: {}
+      categories: {},
+      collection: {}
     }
   },
   beforeMount () {
-    MoltinService.getHomepageProducts().then((response) => {
-      this.products = response
+    MoltinService.getHomepageCategories().then((response) => {
+      this.categories = response
+      console.log(this.categories)
+    })
+    MoltinService.getCollection('79e0c0ee-df47-43b7-b81e-e4e4969de530').then((response) => {
+      this.collection = response
+      console.log(this.collection)
     })
   },
   methods: {
-    getProductThumb: function (product) {
-      var placeholder = 'https://placeholdit.imgix.net/~text?txtsize=69&txt=824%C3%971050&w=824&h=1050'
+    getProductImage: function (product) {
       try {
-        var fileId = product.relationships.files.data[0].id
+        var fileId = product.relationships.files.data['0'].id
 
-        var file = this.products.included.files.find(function (el) {
-          return fileId === el.id
+        MoltinService.getProductFiles(fileId).then((response) => {
+          console.log(response.data.link.href)
         })
-
-        return file.link.href || placeholder
       } catch (e) {
-        return placeholder
+        console.log(e)
       }
     }
   }
 }
+
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-  #slider {
-    margin-top: 2px;
-    height: 600px;
-    background: #f2f2f2 url(/static/hero.jpeg);
-    background-size: cover;
-    background-position: top;
-  }
-
-  .product {
-    padding: 30px;
-  }
-
-  .product-info {
-    text-align: left;
-  }
-
-  .product-info h2 {
-    font-weight: normal;
-    font-size: 1em;
-  }
-
-  .product-info h2 a {
-    color: #292b2c
-  }
-
-  .product-info p {
-    font-size: 0.8em;
-    font-weight: bold;
-  }
-
-  .product-image img {
-    max-height: 100%;
-    max-width: 100%;
-  }
-</style>

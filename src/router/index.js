@@ -5,6 +5,7 @@ import Product from '@/components/Product'
 import Cart from '@/components/Cart'
 import Checkout from '@/components/Checkout'
 import Payment from '@/components/Payment'
+import Products from '@/components/Products'
 
 Vue.use(Router)
 
@@ -26,7 +27,12 @@ export default new Router({
       component: Checkout
     },
     {
-      path: '/products/:slug',
+      path: '/products',
+      name: 'Products',
+      component: Products
+    },
+    {
+      path: '/product/:slug',
       name: 'Product',
       component: Product
     },
