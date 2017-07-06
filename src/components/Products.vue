@@ -3,7 +3,7 @@
           <div class="content">
               <div class="product-list">
                   <a class="product-item" href="product.html" v-for="(product, key) in products.data">
-                      <div class="product-image" style="background: #d9d9d9;">
+                      <div class="product-image" v-bind:style="{ background: product.background_colour }">
                         <router-link :to="'/products/' + product.slug">
                           <img :src="getProductThumb(product)" alt="">
                         </router-link>

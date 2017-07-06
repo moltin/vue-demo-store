@@ -14,24 +14,16 @@ export default {
     return Moltin.Files.Get(fileId)
   },
 
-  filterByCollection (collection) {
-    return Moltin.Products.Filter({
-      eq: {
-        collection: collection
-      }
-    }).with('files').Limit(6).All()
-  },
-
   getHomepageProducts () {
     return Moltin.Products.Filter({}).With('files').Limit(8).All()
   },
 
   getHomepageCollections () {
-    return Moltin.Collections.All()
+    return Moltin.Collections.With('products').All()
   },
 
   getHomepageCategories () {
-    return Moltin.Categories.All()
+    return Moltin.Categories.With('files').All()
   },
 
   getCollection (uuid) {
