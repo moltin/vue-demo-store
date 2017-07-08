@@ -5,35 +5,39 @@ import Product from '@/components/Product'
 import Cart from '@/components/Cart'
 import Checkout from '@/components/Checkout'
 import Payment from '@/components/Payment'
+import Products from '@/components/Products'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/cart',
-      name: 'Cart',
-      component: Cart
-    },
-    {
-      path: '/checkout',
-      name: 'Checkout',
-      component: Checkout
-    },
-    {
-      path: '/products/:slug',
-      name: 'Product',
-      component: Product
-    },
-    {
-      path: '/payments/:orderId',
-      name: 'Payment',
-      component: Payment
-    }
-  ]
+  routes: [{
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
+  },
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: Checkout
+  },
+  {
+    path: '/products',
+    name: 'Products',
+    component: Products
+  },
+  {
+    path: '/products/:slug',
+    name: 'Product',
+    component: Product
+  },
+  {
+    path: '/payments/:orderId',
+    name: 'Payment',
+    component: Payment
+  }]
 })

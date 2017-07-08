@@ -1,13 +1,13 @@
 import { gateway as MoltinGateway } from '@moltin/sdk'
 
 const Moltin = MoltinGateway({
-  client_id: 'pTlK7P9BYEu7HTjNlh9Zyp75qGkxxeGiPmqq8CEFEq'
+  client_id: 'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4'
 })
 
 export default {
 
-  getHomepageProducts () {
-    return Moltin.Products.Filter({}).With('files').Limit(8).All()
+  getProducts () {
+    return Moltin.Products.Filter({}).With('files').All()
   },
 
   findBySlug (slug) {

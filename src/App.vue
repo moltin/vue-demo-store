@@ -1,24 +1,23 @@
 <template>
-  <div id="app">
-    <div id="top-bar" class="row">
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-md-4 menu">
-            <router-link to="/">Home</router-link> | <a href="#">Men</a> | <a href="#">Women</a>
-          </div>
-          <div class="col-md-4 text-center">
-            Logo
-          </div>
-          <div class="col-md-4 text-right">
-            <router-link to="/cart">
-              Cart ({{ cartItems.data.length }} items)
-            </router-link>
-          </div>
+<!-- need some way to dynamically load the header heeya! -->
+  <main role="main" id="container" class="main-container push">
+    <router-view></router-view>
+    <section class="mailing-list">
+      <div class="content">
+        <div class="mailing-list-content">
+          <h2>Do you
+            <span class="love">love</span> lamp?</h2>
+          <p>Sign up to recieve
+            <span class="word-mark">I
+              <span class="love">Love</span>Lamp</span> product news, promotions and updates.</p>
+          <form class="newsletter-form" method="post" novalidate>
+            <input class="email" required="required" placeholder="Email address" name="email" type="email" aria-label="Email">
+            <button type="submit" class="submit">Sign up</button>
+          </form>
         </div>
       </div>
-    </div>
-    <router-view></router-view>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -40,24 +39,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  #app {
-    font-size: 0.9em;
-  }
-
-  #top-bar {
-    background-color: #2691C7;
-    color: #fff;
-    padding: 15px 25px;
-  }
-
-  #top-bar a {
-    padding: 0 10px;
-    color: #fff;
-  }
-
-  #top-bar .menu a:first-child {
-    padding-left: 0;
-  }
-</style>
