@@ -39,18 +39,12 @@ export default {
   },
   methods: {
     getProductImage: function (product) {
-      console.log('get product image called')
-      console.log('-----product------')
-      console.log(product)
-      console.log('------------------')
       var placeholder = 'https://placeholdit.imgix.net/~text?txtsize=69&txt=824%C3%971050&w=824&h=900'
       try {
         var fileId = product.relationships.files.data['0'].id
-        console.log('file id ' + fileId)
         var file = this.products.included.main_images.find(function (el) {
           return fileId === el.id
         })
-        console.log(file.link.href)
         return file.link.href || placeholder
       } catch (e) {
         console.log('ERROR!! ' + e)
