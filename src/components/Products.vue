@@ -3,8 +3,8 @@
   <productsHeaderComponent></productsHeaderComponent>
    <section class="products">
         <div class="content">
-            <div class="product-list">
-                <a class="product-item" href="product.html" v-for="(product, val) in products.data">
+            <div class="product-list" v-if="products.data">
+                <router-link :to="'/product/' + product.slug" class="product-item" href="" v-for="(product, val) in products.data" :key="product.id">
                     <div class="product-image" v-bind:style="{ background: product.background_colour }">
                         <img :src="getProductImage(product)" alt="Crown - A unique black lamp with six metal legs forming a nest at the top, creating a crown of six lights."/>
                     </div>
@@ -15,7 +15,7 @@
                             <div class="price">{{ product.price.amount }}</div>
                         </div>
                     </div>
-                </a>
+                </router-link>
             </div>
         </div>
     </section>

@@ -22,6 +22,10 @@ export default {
     return Moltin.Cart.Items()
   },
 
+  getHomepageCategories () {
+    return Moltin.Categories.With('files').All()
+  },
+
   addToCart (productId) {
     return Moltin.Cart.AddProduct(productId)
   },
