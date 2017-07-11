@@ -5,15 +5,15 @@
       <div class="content">
         <div class="product-listing">
           <div class="product-image" >
-            <img src="/static/img/products/lamp7-trans.png" alt="Crown - A unique black lamp with six metal legs forming a nest at the top, creating a crown of six lights." style="background: #d9d9d9;">
+            <img :src="imageUrl" alt="Crown - A unique black lamp with six metal legs forming a nest at the top, creating a crown of six lights." v-bind:style="{ background: product.background_colour }">
           </div>
           <div class="product-description">
-                    <h2>Crown</h2>
+                    <h2>{{ product.name }}</h2>
                     <p class="manufacturer"><span class="hide-content">Manufactured </span>By <span class="word-mark">I<span class="love">Love</span>Lamp</span></p>
-                    <p class="price"><span class="hide-content">Unit price </span>$475</p>
+                    <p class="price"><span class="hide-content">Unit price </span>{{ price }}</p>
                     <div class="description">
                         <p class="hide-content">Product details:</p>
-                        <p>Abstract, sculptural, refined and edgy with a modern twist. Its symmetrical, spoked structure generates a clever geometric presence, which works well in a contemporary environment.</p>
+                        <p>{{ product.description }}</p>
                     </div>
                     <form class="product" method="post" novalidate>
                         <div class="quantity-input">
@@ -37,27 +37,27 @@
                         </div>
                         <div class="row">
                             <div class="label">Finish</div>
-                            <div class="value">Matt black</div>
+                            <div class="value">{{ product.finish }}</div>
                         </div>
                         <div class="row">
                             <div class="label">Material</div>
-                            <div class="value">Steel & acrylic</div>
+                            <div class="value">{{ product.material }}</div>
                         </div>
                         <div class="row">
                             <div class="label">Bulb type</div>
-                            <div class="value">E27</div>
+                            <div class="value">{{ product.bulb }}</div>
                         </div>
                         <div class="row">
                             <div class="label">Max Watt</div>
-                            <div class="value">40W</div>
+                            <div class="value">{{ product.max_watt }}</div>
                         </div>
                         <div class="row">
                             <div class="label">Bulb Qty</div>
-                            <div class="value">6</div>
+                            <div class="value">{{ product.bulb_qty }}</div>
                         </div>
                         <div class="row">
                             <div class="label">SKU</div>
-                            <div class="value sku">CWLP100BLK</div>
+                            <div class="value sku">{{ product.sku }}</div>
                         </div>
                     </div>
                 </div>
@@ -107,12 +107,17 @@ export default {
   name: 'product',
   data () {
     return {
-      product: {}
+      product: {},
+      imageUrl: '',
+      price: ''
     }
   },
   beforeMount () {
     MoltinService.findBySlug(this.$route.params.slug).then((response) => {
-      this.product = response
+      this.product = response.data['0']
+      this.price = response.data['0'].price['0'].amount
+      this.imageUrl = response.included.files['0'].link.href
+      console.log(response)
     })
   },
   methods: {
