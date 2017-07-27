@@ -3,12 +3,8 @@
     <div id="top-bar" class="row">
       <div class="col-sm-12">
         <div class="row">
-          <div class="col-md-4 menu">
-            <router-link to="/">Home</router-link> | <a href="#">Men</a> | <a href="#">Women</a>
-          </div>
-          <div class="col-md-4 text-center">
-            Logo
-          </div>
+          <div class="col-md-4 menu"></div>
+          <div class="col-md-4"></div>
           <div class="col-md-4 text-right">
             <router-link to="/cart">
               Cart ({{ cartItems.data.length }} items)
@@ -47,7 +43,7 @@ export default {
   }
 
   #top-bar {
-    background-color: #2691C7;
+    background-color: #C0AAAA;
     color: #fff;
     padding: 15px 25px;
   }
@@ -59,5 +55,10 @@ export default {
 
   #top-bar .menu a:first-child {
     padding-left: 0;
+  }
+
+  .btn-primary {
+    background-color: #C0AAAA;
+    border-color: #C0AAAA;
   }
 </style>

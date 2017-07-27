@@ -13,7 +13,6 @@
                 </td>
               </tr>
             </table>
-
             <router-link :to="'/checkout'" class="btn btn-primary">Checkout</router-link>
           </div>
         </div>
