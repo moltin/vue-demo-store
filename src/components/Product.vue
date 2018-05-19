@@ -14,10 +14,10 @@
             </div>
               <div class="extra">
                 <div class="ui action input">
-                  <input type="number" placeholder="Quantity" value="1">
-                  <button class="ui orange button" role="button" v-on:click.prevent="addToCart(product.data[0].id)">
-          <i aria-hidden="true" class="plus cart icon"></i>Add to Cart
-          </button>
+                  <input type="number" placeholder="Quantity" v-model="qty">
+                  <button class="ui orange button" role="button" v-on:click.prevent="addToCart(product.data[0].id, qty)">
+                    <i aria-hidden="true" class="plus cart icon"></i>Add to Cart
+                  </button>
               </div>
             </div>
           </div>
@@ -65,17 +65,20 @@ export default {
   name: 'product',
   data () {
     return {
-      product: {}
+      product: {},
+      qty: 1
     }
   },
   beforeMount () {
+    // TODO: This might not resolve before the template is built. Add a workaround.
     MoltinService.findBySlug(this.$route.params.slug).then((response) => {
       this.product = response
     })
   },
   methods: {
-    addToCart: function (productId) {
-      MoltinService.addToCart(productId)
+    addToCart: function (productId, qty) {
+      MoltinService.addToCart(productId, qty)
+      this.qty = 1
     }
   }
 }
