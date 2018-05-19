@@ -1,29 +1,20 @@
 <template>
 
   <div>
-    <div class="row">
-      <div class="col-md-8 offset-md-2 text-center">
-
-        <div class="row">
-
-          <div class="col-md-3 product" v-for="(product, key) in products.data">
-            <div class="product-image">
-              <router-link :to="'/products/' + product.slug">
-                <img :src="getProductThumb(product)" alt="">
-              </router-link>
-            </div>
-            <div class="product-info">
-              <h2>
-                <router-link :to="'/products/' + product.slug">
-                  {{ product.name }}
-                </router-link>
-              </h2>
-              <p>{{ product.meta.display_price.with_tax.formatted }}</p>
-            </div>
+    <div class="ui text container" style="padding-top: 7em;">
+      <div class="ui items" v-for="(product, key) in products.data">
+        <div class="item">
+          <router-link :to="'/products/' + product.slug" class="ui small image">
+            <img :src="getProductThumb(product)" alt="">
+          </router-link>
+          <div class="content">
+            <router-link :to="'/products/' + product.slug" class="header">
+              {{ product.name }}
+            </router-link>
+            <div class="meta">{{ product.meta.display_price.with_tax.formatted }}</div>
+            <div class="description">{{ product.description }}</div>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
@@ -66,38 +57,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-  #slider {
-    margin-top: 2px;
-    height: 600px;
-    background: #f2f2f2 url(/static/hero.jpeg);
-    background-size: cover;
-    background-position: top;
-  }
-
-  .product {
-    padding: 30px;
-  }
-
-  .product-info {
-    text-align: left;
-  }
-
-  .product-info h2 {
-    font-weight: normal;
-    font-size: 1em;
-  }
-
-  .product-info h2 a {
-    color: #292b2c
-  }
-
-  .product-info p {
-    font-size: 0.8em;
-    font-weight: bold;
-  }
-
-  .product-image img {
-    max-height: 100%;
-    max-width: 100%;
-  }
 </style>

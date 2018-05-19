@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-    <div id="top-bar" class="row">
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-md-4 menu"></div>
-          <div class="col-md-4"></div>
-          <div class="col-md-4 text-right">
-            <router-link to="/cart">
-              Cart ({{ cartItems.data.length }} items)
-            </router-link>
-          </div>
-        </div>
+    <div class="ui huge inverted top fixed menu">
+      <div class="ui text container">
+        <router-link to="/" class="header item">
+          <img src="/static/moltin-light-hex.svg" class="ui mini image" style="margin-right: 1.5em;">Vue.js Store
+        </router-link>
+        <router-link to="/cart" class="right item">
+          Cart ({{ cartItems.data.length }} items)
+        </router-link>
       </div>
     </div>
     <router-view></router-view>
@@ -38,27 +35,4 @@ export default {
 </script>
 
 <style>
-  #app {
-    font-size: 0.9em;
-  }
-
-  #top-bar {
-    background-color: #C0AAAA;
-    color: #fff;
-    padding: 15px 25px;
-  }
-
-  #top-bar a {
-    padding: 0 10px;
-    color: #fff;
-  }
-
-  #top-bar .menu a:first-child {
-    padding-left: 0;
-  }
-
-  .btn-primary {
-    background-color: #C0AAAA;
-    border-color: #C0AAAA;
-  }
 </style>

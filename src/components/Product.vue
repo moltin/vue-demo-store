@@ -1,20 +1,62 @@
 <template>
-    <div class="row">
-      <div class="col-md-8 offset-md-2 text-center">
-        <div class="row">
-          <div class="col-md-5 product-image">
+  <div>
+    <div class="ui text container" style="padding-top: 7em;">
+      <div class="ui items">
+        <div class="item">
+          <div class="ui medium image">
             <img :src="product.included.files[0].link.href" alt="">
           </div>
-          <div class="col-md-7 product-data">
-            <h2>{{ product.data[0].name }}</h2>
-            <p class="price">{{ product.data[0].meta.display_price.with_tax.formatted }}</p>
-            <hr />
-            <p>{{ product.data[0].description }}</p>
-            <p><a href="#" class="btn btn-primary" v-on:click.prevent="addToCart(product.data[0].id)">Add to cart</a></p>
+          <div class="content">
+            <div class="header">{{ product.data[0].name }}</div>
+            <div class="description">
+              <p>{{ product.data[0].meta.display_price.with_tax.formatted }}</p>
+              <div class="ui label">SKU: {{ product.data[0].sku }}</div>
+            </div>
+              <div class="extra">
+                <div class="ui action input">
+                  <input type="number" placeholder="Quantity" value="1">
+                  <button class="ui orange button" role="button" v-on:click.prevent="addToCart(product.data[0].id)">
+          <i aria-hidden="true" class="plus cart icon"></i>Add to Cart
+          </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <h3 class="ui header">About this product</h3>
+      <p>{{ product.data[0].description }}</p>
+      <div class="ui divider"></div>
+      <table class="ui celled table">
+        <thead class="">
+          <tr class="">
+              <th colspan="2" class="">Attributes</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr class="">
+              <td class="">Material</td>
+              <td class=""></td>
+          </tr>
+          <tr class="">
+              <td class="">Max watt.</td>
+              <td class=""></td>
+          </tr>
+          <tr class="">
+              <td class="">Bulb qty.</td>
+              <td class=""></td>
+          </tr>
+          <tr class="">
+              <td class="">Finish</td>
+              <td class=""></td>
+          </tr>
+          <tr class="">
+              <td class="">Fitting</td>
+              <td class=""></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </template>
 <script>
 import MoltinService from '../services/moltin.js'
@@ -38,28 +80,5 @@ export default {
   }
 }
 </script>
-<style scoped>
-  h2 {
-    font-size: 1.2em;
-    font-weight: normal;
-  }
-
-  .product-data {
-    text-align: left;
-    padding-top: 80px;
-  }
-
-  .price {
-    font-weight: bold;
-  }
-
-  .btn-primary {
-    background-color: #2691C7;
-    border-color: #2691C7;
-  }
-
-  .product-image img {
-    max-width: 100%;
-    max-height: 100%;
-  }
+<style>
 </style>
