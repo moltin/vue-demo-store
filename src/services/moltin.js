@@ -26,6 +26,10 @@ export default {
     return Moltin.Cart.AddProduct(productId, qty)
   },
 
+  removeFromCart (itemId) {
+    return Moltin.Cart.RemoveItem(itemId)
+  },
+
   checkout (checkoutData) {
     return Moltin.Cart.Checkout(checkoutData)
   },
