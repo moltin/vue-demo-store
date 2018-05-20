@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <div class="ui items" v-for="(product, key) in products.data">
+    <div class="ui items" v-for="product in products.data" :key="product.id">
       <div class="item">
         <router-link :to="'/products/' + product.slug" class="ui small image">
           <img :src="getProductThumb(product)" alt="">

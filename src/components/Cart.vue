@@ -7,7 +7,7 @@
 
       <div v-if="cart.data.length > 0 || true">
         <div class="ui divided items">
-          <div class="item" v-for="item in cart.data">
+          <div class="item" v-for="item in cart.data" :key="item.id">
             <div class="ui small image">
               <img v-bind:src="item.image.href" alt="">
             </div>
