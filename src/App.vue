@@ -6,11 +6,11 @@
           <img src="/static/moltin-light-hex.svg" class="ui mini image" style="margin-right: 1.5em;">Vue.js Store
         </router-link>
         <router-link to="/cart" class="right item">
-          Cart ({{ cartItems.data.length }} items)
+          Cart ({{ cart.data.length }} items)
         </router-link>
       </div>
     </div>
-    <router-view></router-view>
+    <router-view :cart="cart" @cart-updated="onCartUpdated"></router-view>
   </div>
 </template>
 
@@ -21,15 +21,20 @@ export default {
   name: 'app',
   data () {
     return {
-      cartItems: {
+      cart: {
         data: []
       }
     }
   },
   beforeMount () {
     MoltinService.getCart().then((response) => {
-      this.cartItems = response
+      this.cart = response
     })
+  },
+  methods: {
+    onCartUpdated (cart) {
+      this.cart = cart
+    }
   }
 }
 </script>

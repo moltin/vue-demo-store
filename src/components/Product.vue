@@ -75,8 +75,10 @@ export default {
   },
   methods: {
     addToCart: function (productId, qty) {
-      MoltinService.addToCart(productId, qty)
-      this.qty = 1
+      MoltinService.addToCart(productId, qty).then((response) => {
+        this.$emit('cart-updated', response)
+        this.qty = 1
+      })
     }
   }
 }
