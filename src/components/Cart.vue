@@ -5,7 +5,7 @@
         <p>You'll need to add some items to the cart before you can checkout.</p>
       </div>
 
-      <div v-if="cart.data.length > 0 || true">
+      <div v-if="cart.data.length > 0">
         <div class="ui divided items">
           <div class="item" v-for="item in cart.data" :key="item.id">
             <div class="ui small image">
