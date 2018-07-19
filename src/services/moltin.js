@@ -7,7 +7,7 @@ const Moltin = MoltinGateway({
 export default {
 
   getHomepageProducts () {
-    return Moltin.Products.Filter({}).With('files').Limit(8).All()
+    return Moltin.Products.Filter({}).With('main_image').Limit(8).All()
   },
 
   findBySlug (slug) {
@@ -15,7 +15,7 @@ export default {
       eq: {
         slug: slug
       }
-    }).With(['files', 'brands']).Limit(1).All()
+    }).With(['main_image', 'brands']).Limit(1).All()
   },
 
   getCart () {

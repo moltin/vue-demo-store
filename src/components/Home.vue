@@ -38,9 +38,9 @@ export default {
     getProductThumb: function (product) {
       var placeholder = 'https://placeholdit.imgix.net/~text?txtsize=69&txt=824%C3%971050&w=824&h=1050'
       try {
-        var fileId = product.relationships.files.data[0].id
+        var fileId = product.relationships.main_image.data.id
 
-        var file = this.products.included.files.find(function (el) {
+        var file = this.products.included.main_images.find(function (el) {
           return fileId === el.id
         })
 

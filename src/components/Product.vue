@@ -3,7 +3,7 @@
     <div class="ui items">
       <div class="item">
         <div class="ui medium image">
-          <img :src="product.included.files[0].link.href" alt="">
+          <img :src="product.included.main_images[0].link.href" alt="">
         </div>
         <div class="content">
           <div class="header">{{ product.data[0].name }}</div>
