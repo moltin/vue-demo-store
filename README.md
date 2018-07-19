@@ -1,6 +1,6 @@
 # moltin-vue-demo
 
-A barebones [moltin](https://moltin.com/) demo store built with [Vue.js](https://vuejs.org/).
+A barebones [moltin](https://moltin.com/) demo store built with [Vue.js](https://vuejs.org/). View a [demo here](https://moltin-examples.github.io/vue-demo-store/#/).
 
 ![Demo Image](https://raw.githubusercontent.com/moltin/vue-demo-store/master/screenshot.png)
 
