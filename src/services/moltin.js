@@ -30,8 +30,8 @@ export default {
     return Moltin.Cart().RemoveItem(itemId)
   },
 
-  checkout (checkoutData) {
-    return Moltin.Cart().Checkout(checkoutData)
+  checkout (customerId, billing, shipping) {
+    return Moltin.Cart().Checkout(customerId, billing, shipping)
   },
 
   pay (orderId, paymentData) {
