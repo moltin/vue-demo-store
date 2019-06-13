@@ -3,13 +3,13 @@
     <div class="ui items">
       <div class="item">
         <div class="ui medium image">
-          <img :src="product.included.main_images[0].link.href" alt="">
+          <img v-if="product.data" :src="product.included.main_images[0].link.href" alt="">
         </div>
         <div class="content">
-          <div class="header">{{ product.data[0].name }}</div>
+          <div v-if="product.data" class="header">{{ product.data[0].name }}</div>
           <div class="description">
-            <p>{{ product.data[0].meta.display_price.with_tax.formatted }}</p>
-            <div class="ui label">SKU: {{ product.data[0].sku }}</div>
+            <p v-if="product.data">{{ product.data[0].meta.display_price.with_tax.formatted }}</p>
+            <div v-if="product.data" class="ui label">SKU: {{ product.data[0].sku }}</div>
           </div>
             <div class="extra">
               <div class="ui action input">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <h3 class="ui header">About this product</h3>
-    <p>{{ product.data[0].description }}</p>
+    <p v-if="product.data">{{ product.data[0].description }}</p>
     <div class="ui divider"></div>
     <table class="ui celled table">
       <thead class="">
