@@ -19,19 +19,19 @@ export default {
   },
 
   getCart () {
-    return Moltin.Cart.Items()
+    return Moltin.Cart().Items()
   },
 
   addToCart (productId, qty) {
-    return Moltin.Cart.AddProduct(productId, qty)
+    return Moltin.Cart().AddProduct(productId, qty)
   },
 
   removeFromCart (itemId) {
-    return Moltin.Cart.RemoveItem(itemId)
+    return Moltin.Cart().RemoveItem(itemId)
   },
 
   checkout (checkoutData) {
-    return Moltin.Cart.Checkout(checkoutData)
+    return Moltin.Cart().Checkout(checkoutData)
   },
 
   pay (orderId, paymentData) {
